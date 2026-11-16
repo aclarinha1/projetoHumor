@@ -6,12 +6,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Configuração do projeto no Firebase
 const firebaseConfig = {
-  apiKey: 'AIzaSyDVdE37JXNvfELBG0wl7RDhT-AHtlvaIic',
-  authDomain: 'projetohumor-8cb46.firebaseapp.com',
-  projectId: 'projetohumor-8cb46',
-  storageBucket: 'projetohumor-8cb46.firebasestorage.app',
-  messagingSenderId: '150044741598',
-  appId: '1:150044741598:web:1837ac8b0ae9016395d74f',
+  apiKey: "AIzaSyDVdE37JXNvfElBG0wl7RDhT-AHtlvaIic",
+  authDomain: "projetohumor-8cb46.firebaseapp.com",
+  projectId: "projetohumor-8cb46",
+  storageBucket: "projetohumor-8cb46.firebasestorage.app",
+  messagingSenderId: "150044741598",
+  appId: "1:150044741598:web:1837ac8b0ae9016395d74f"
 };
 
 // Inicializa o Firebase apenas uma vez
