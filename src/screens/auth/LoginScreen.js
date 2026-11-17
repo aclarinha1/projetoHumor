@@ -11,13 +11,59 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { COLORS } from '../../styles/theme';
+import { entrarUsuario } from '../../services/auth';
 
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [carregando, setCarregando] = useState(false);
+
+
+  async function handleLogin() {
+    const emailLimpo = email.trim();
+
+    if (!emailLimpo || !senha) {
+      Alert.alert('Atenção', 'Preencha todos os campos.');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailLimpo)) {
+      Alert.alert('Atenção', 'Digite um e-mail válido.');
+      return;
+    }
+
+    setCarregando(true);
+
+    try {
+      await entrarUsuario(emailLimpo, senha);
+
+    } catch (error) {
+      console.log('ERRO LOGIN:', error.code, error.message);
+
+      let mensagem = 'Não foi possível entrar. Tente novamente.';
+
+      if (
+        error.code === 'auth/invalid-credential' ||
+        error.code === 'auth/wrong-password' ||
+        error.code === 'auth/user-not-found'
+      ) {
+        mensagem = 'E-mail ou senha incorretos.';
+      } else if (error.code === 'auth/network-request-failed') {
+        mensagem = 'Verifique sua conexão com a internet.';
+      } else if (error.code === 'auth/too-many-requests') {
+        mensagem = 'Muitas tentativas. Aguarde um pouco e tente novamente.';
+      }
+
+      Alert.alert('Erro no login', mensagem);
+    } finally {
+      setCarregando(false);
+    }
+  }
 
   return (
     <ImageBackground
@@ -60,12 +106,17 @@ export default function LoginScreen({ navigation }) {
             value={senha}
             onChangeText={setSenha}
           />
-
+          
           <TouchableOpacity
             style={styles.botao}
-            onPress={() => {}}
+            onPress={handleLogin}
+            disabled={carregando}
           >
-            <Text style={styles.textoBotao}>ENTRAR</Text>
+            {carregando ? (
+              <ActivityIndicator color={COLORS.white} />
+            ) : (
+              <Text style={styles.textoBotao}>ENTRAR</Text>
+            )}
           </TouchableOpacity>
 
           <View style={styles.cadastroContainer}>

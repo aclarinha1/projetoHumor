@@ -47,10 +47,6 @@ export default function RegisterScreen({ navigation }) {
     try {
       await cadastrarUsuario(nomeLimpo, emailLimpo, senha);
 
-      Alert.alert(
-        'Cadastro realizado!',
-        'Sua conta foi criada com sucesso.'
-      );
     } catch (error) {
       console.log('ERRO FIREBASE:', error.code, error.message);
       
