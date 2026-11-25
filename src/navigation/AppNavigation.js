@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -24,6 +25,9 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 
+// Importando a tela de Registrar Humor
+import RegistrarHumorScreen from '../screens/humor/RegistrarHumorScreen';
+
 const Stack = createNativeStackNavigator();
 
 
@@ -32,7 +36,6 @@ const Stack = createNativeStackNavigator();
 
 function TelaEmDesenvolvimento({ navigation, route }) {
   const nomes = {
-    RegistrarHumor: 'Cadastro de Humor',
     Historico: 'Histórico de Humor',
     Perfil: 'Meu Perfil',
   };
@@ -121,7 +124,7 @@ export default function AppNavigation() {
 
             <Stack.Screen
               name="RegistrarHumor"
-              component={TelaEmDesenvolvimento}
+              component={RegistrarHumorScreen}
             />
 
 
