@@ -23,6 +23,7 @@ import { auth } from '../services/firebase';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import HomeScreen from '../screens/home/HomeScreen';
+import ProfileScreen from '../screens/profile/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -137,7 +138,7 @@ export default function AppNavigation() {
 
             <Stack.Screen
               name="Perfil"
-              component={TelaEmDesenvolvimento}
+              component={ProfileScreen}
             />
 
           </>
