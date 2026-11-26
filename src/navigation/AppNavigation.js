@@ -26,6 +26,7 @@ import HomeScreen from '../screens/home/HomeScreen';
 import ProfileScreen from '../screens/profile/ProfileScreen';
 import RegistrarHumorScreen from '../screens/humor/RegistrarHumorScreen';
 import MensagemScreen from '../screens/mensagem/MensagemScreen';
+import HistoryScreen from '../screens/historico/HistoryScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -136,7 +137,7 @@ export default function AppNavigation() {
 
             <Stack.Screen
               name="Historico"
-              component={TelaEmDesenvolvimento}
+              component={HistoryScreen}
             />
 
 
