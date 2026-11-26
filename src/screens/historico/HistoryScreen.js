@@ -153,11 +153,51 @@ export default function HistoryScreen({ navigation }) {
           contentContainerStyle={styles.conteudo}
         >
 
-          {/* TÍTULO */}
+          {/* CABEÇALHO SUPERIOR */}
 
-          <Text style={styles.titulo}>
-            Meu Histórico
-          </Text>
+          <View style={styles.cabecalhoTopo}>
+
+            {/* SETA PARA VOLTAR À HOME */}
+
+            <TouchableOpacity
+              style={styles.botaoVoltar}
+              onPress={() => navigation.navigate('Home')}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.setaVoltar}>
+                ‹
+              </Text>
+            </TouchableOpacity>
+
+            {/* TÍTULO CENTRALIZADO */}
+
+            <Text style={styles.titulo}>
+              Meu Histórico
+            </Text>
+
+            {/* CALENDÁRIO ROXO */}
+
+            <View style={styles.iconeCalendario}>
+
+              <View style={styles.calendarioArgolas}>
+                <View style={styles.argola} />
+                <View style={styles.argola} />
+              </View>
+
+              <View style={styles.calendarioLinha} />
+
+              <View style={styles.calendarioPontos}>
+                <View style={styles.pontoCalendario} />
+                <View style={styles.pontoCalendario} />
+                <View style={styles.pontoCalendario} />
+                <View style={styles.pontoCalendario} />
+                <View style={styles.pontoCalendario} />
+                <View style={styles.pontoCalendario} />
+              </View>
+
+            </View>
+
+          </View>
 
           <Text style={styles.subtitulo}>
             Confira seus registros de humor
@@ -169,6 +209,7 @@ export default function HistoryScreen({ navigation }) {
           {carregando ? (
 
             <View style={styles.estado}>
+
               <ActivityIndicator
                 size="large"
                 color="#6938B0"
@@ -177,6 +218,7 @@ export default function HistoryScreen({ navigation }) {
               <Text style={styles.textoEstado}>
                 Carregando seus registros...
               </Text>
+
             </View>
 
           ) : registros.length === 0 ? (
@@ -354,12 +396,94 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
   },
 
+  // CABEÇALHO SUPERIOR
+
+  cabecalhoTopo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 45,
+    marginBottom: 10,
+  },
+
+  // SETA DE VOLTAR
+
+  botaoVoltar: {
+    width: 35,
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+
+  setaVoltar: {
+    fontSize: 40,
+    color: '#6938B0',
+    lineHeight: 45,
+    fontWeight: '300',
+  },
+
+  // TÍTULO
+
   titulo: {
+    flex: 1,
     fontSize: 30,
     fontWeight: 'bold',
     color: '#32105F',
     textAlign: 'center',
   },
+
+  // ÍCONE DE CALENDÁRIO
+
+  iconeCalendario: {
+    width: 27,
+    height: 27,
+    borderWidth: 2,
+    borderColor: '#6938B0',
+    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  calendarioArgolas: {
+    position: 'absolute',
+    top: -5,
+    width: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  argola: {
+    width: 3,
+    height: 7,
+    borderRadius: 2,
+    backgroundColor: '#6938B0',
+  },
+
+  calendarioLinha: {
+    width: '100%',
+    height: 2,
+    backgroundColor: '#6938B0',
+    position: 'absolute',
+    top: 7,
+  },
+
+  calendarioPontos: {
+    width: 16,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+
+  pontoCalendario: {
+    width: 3,
+    height: 3,
+    borderRadius: 2,
+    backgroundColor: '#6938B0',
+    margin: 1,
+  },
+
+  // SUBTÍTULO
 
   subtitulo: {
     fontSize: 16,
@@ -368,6 +492,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 25,
   },
+
+  // ESTADOS
 
   estado: {
     flex: 1,
@@ -396,6 +522,8 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
 
+  // BOTÃO REGISTRAR
+
   botaoRegistrar: {
     backgroundColor: '#6938B0',
     paddingVertical: 14,
@@ -409,6 +537,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
   },
+
+  // LISTA DE REGISTROS
 
   lista: {
     paddingBottom: 20,
@@ -467,6 +597,8 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
 
+  // MENU INFERIOR
+
   navegacao: {
     height: 75,
     backgroundColor: 'rgba(255,255,255,0.96)',
@@ -502,3 +634,4 @@ const styles = StyleSheet.create({
   },
 
 });
+
