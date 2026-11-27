@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -25,9 +24,9 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 import ProfileScreen from '../screens/profile/ProfileScreen';
-
-// Importando a tela de Registrar Humor
 import RegistrarHumorScreen from '../screens/humor/RegistrarHumorScreen';
+import MensagemScreen from '../screens/mensagem/MensagemScreen';
+import HistoryScreen from '../screens/historico/HistoryScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -128,12 +127,17 @@ export default function AppNavigation() {
               component={RegistrarHumorScreen}
             />
 
+            <Stack.Screen
+              name="Mensagem"
+              component={MensagemScreen}
+            />
+
 
             {/* HISTÓRICO */}
 
             <Stack.Screen
               name="Historico"
-              component={TelaEmDesenvolvimento}
+              component={HistoryScreen}
             />
 
 

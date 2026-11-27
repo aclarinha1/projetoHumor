@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 import {
@@ -85,15 +84,13 @@ export default function RegistrarHumorScreen({ navigation }) {
 
       });
 
-      Alert.alert(
-        'Sucesso',
-        'Seu humor foi registrado!'
-      );
-
-      setHumor('');
       setDescricao('');
 
-      navigation.goBack();
+      navigation.replace('Mensagem', {
+        humor: humor,
+      })
+
+      setHumor('');
 
     } catch (error) {
 
