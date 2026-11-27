@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import {
@@ -13,7 +14,6 @@ import {
 } from 'react-native';
 
 import { auth } from '../../services/firebase';
-import { COLORS } from '../../styles/theme';
 
 export default function HomeScreen({ navigation }) {
 
@@ -23,7 +23,6 @@ export default function HomeScreen({ navigation }) {
   const fotoPerfil = auth.currentUser?.photoURL
     ? { uri: auth.currentUser.photoURL }
     : require('../../../assets/images/img-fotodeperfil-alternativa.png');
-
 
   function navegarPara(tela) {
     const rotas = navigation.getState()?.routeNames || [];
@@ -36,14 +35,14 @@ export default function HomeScreen({ navigation }) {
       return;
     }
 
-    // Se já estiver na tela selecionada, não faz nada.
-    if (navigation.getState()?.routes[
-      navigation.getState().index
-    ]?.name === tela) {
+    if (
+      navigation.getState()?.routes[
+        navigation.getState().index
+      ]?.name === tela
+    ) {
       return;
     }
 
-    // Navega para a tela desejada.
     navigation.navigate(tela);
   }
 
@@ -91,19 +90,15 @@ export default function HomeScreen({ navigation }) {
 
           </View>
 
-
-          {/* ILUSTRAÇÃO */}
+          {/* LOGO */}
 
           <View style={styles.areaLogo}>
-
             <Image
               source={require('../../../assets/images/logo.png')}
               style={styles.logo}
               resizeMode="contain"
             />
-
           </View>
-
 
           {/* BOTÃO REGISTRAR HUMOR */}
 
@@ -112,20 +107,16 @@ export default function HomeScreen({ navigation }) {
             activeOpacity={0.8}
             onPress={() => navegarPara('RegistrarHumor')}
           >
-
             <Text style={styles.mais}>+</Text>
 
             <Text style={styles.textoBotao}>
               Registrar Humor
             </Text>
-
           </TouchableOpacity>
 
-
-          {/* MENSAGEM DE INCENTIVO */}
+          {/* MENSAGEM */}
 
           <View style={styles.cardMensagem}>
-
             <Text style={styles.tituloMensagem}>
               Cuide da sua mente!
             </Text>
@@ -133,13 +124,11 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.textoMensagem}>
               Você é capaz de superar qualquer desafio.
             </Text>
-
           </View>
 
         </ScrollView>
 
-
-        {/* NAVEGAÇÃO INFERIOR */}
+        {/* MENU INFERIOR */}
 
         <View style={styles.navegacao}>
 
@@ -157,7 +146,6 @@ export default function HomeScreen({ navigation }) {
             </Text>
           </TouchableOpacity>
 
-
           <TouchableOpacity
             style={styles.itemNavegacao}
             onPress={() => navegarPara('Historico')}
@@ -171,7 +159,6 @@ export default function HomeScreen({ navigation }) {
               Histórico
             </Text>
           </TouchableOpacity>
-
 
           <TouchableOpacity
             style={styles.itemNavegacao}
@@ -195,7 +182,6 @@ export default function HomeScreen({ navigation }) {
   );
 }
 
-
 const styles = StyleSheet.create({
 
   background: {
@@ -209,76 +195,77 @@ const styles = StyleSheet.create({
 
   conteudo: {
     flexGrow: 1,
+    width: '100%',
+    maxWidth: 900,
+    alignSelf: 'center',
     paddingHorizontal: 25,
-    paddingTop: 55,
-    paddingBottom: 25,
+    paddingTop: 25,
+    paddingBottom: 30,
+    justifyContent: 'flex-start',
+  },
+
+  // CABEÇALHO
+
+  cabecalho: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    width: '100%',
+  },
+
+  areaTexto: {
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 
-// CABEÇALHO
+  titulo: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#32105F',
+    textAlign: 'center',
+  },
 
-cabecalho: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-},
+  subtitulo: {
+    fontSize: 19,
+    color: '#32105F',
+    marginTop: 12,
+    textAlign: 'center',
+  },
 
-areaTexto: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: -400,
-},
+  botaoPerfil: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    overflow: 'hidden',
+    marginLeft: 10,
+  },
 
-titulo: {
-  fontSize: 35,
-  fontWeight: 'bold',
-  color: '#32105F',
-  marginLeft: 40,
-},
-
-subtitulo: {
-  fontSize: 19,
-  color: '#32105F',
-  marginTop: 15,
-  marginLeft: 40,
-},
-
-botaoPerfil: {
-  width: 45,
-  height: 45,
-  borderRadius: 26,
-  overflow: 'hidden',
-  marginTop: -440,
-},
-
-imagemPerfil: {
-  width: '100%',
-  height: '100%',
-  borderRadius: 26,
-},
-
+  imagemPerfil: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 25,
+  },
 
   // LOGO
 
   areaLogo: {
     alignItems: 'center',
-    marginTop: 35,
+    marginTop: 25,
     marginBottom: 25,
   },
 
   logo: {
-    marginTop: -170,
     width: 210,
     height: 160,
   },
-
 
   // BOTÃO
 
   botaoRegistrar: {
     backgroundColor: '#6938B0',
-    height: 58,
+    height: 65,
+    width: '100%',
     borderRadius: 18,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -296,10 +283,9 @@ imagemPerfil: {
 
   textoBotao: {
     color: '#FFFFFF',
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: 'bold',
   },
-
 
   // CARD
 
@@ -309,6 +295,7 @@ imagemPerfil: {
     padding: 22,
     alignItems: 'center',
     marginTop: 25,
+    width: '100%',
   },
 
   tituloMensagem: {
@@ -316,6 +303,7 @@ imagemPerfil: {
     fontWeight: 'bold',
     color: '#32105F',
     marginBottom: 10,
+    textAlign: 'center',
   },
 
   textoMensagem: {
@@ -325,8 +313,7 @@ imagemPerfil: {
     lineHeight: 22,
   },
 
-
-  // NAVEGAÇÃO INFERIOR
+  // MENU INFERIOR
 
   navegacao: {
     height: 75,
@@ -342,16 +329,6 @@ imagemPerfil: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  iconeAtivo: {
-    fontSize: 29,
-    color: '#6938B0',
-  },
-
-  icone: {
-    fontSize: 27,
-    color: '#8D7BA6',
   },
 
   textoAtivo: {
@@ -375,5 +352,6 @@ imagemPerfil: {
   menuinferiorperfil: {
     width: 23,
     height: 23,
-  }
+  },
+
 });
