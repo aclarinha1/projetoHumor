@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     maxWidth: 900,
     alignSelf: 'center',
     paddingHorizontal: 25,
-    paddingTop: 25,
+    paddingTop: 55,
     paddingBottom: 30,
     justifyContent: 'flex-start',
   },
