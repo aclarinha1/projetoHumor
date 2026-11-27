@@ -27,7 +27,7 @@ import ProfileScreen from '../screens/profile/ProfileScreen';
 import RegistrarHumorScreen from '../screens/humor/RegistrarHumorScreen';
 import MensagemScreen from '../screens/mensagem/MensagemScreen';
 import HistoryScreen from '../screens/historico/HistoryScreen';
-
+import EditarHumorScreen from '../screens/humor/EditarHumorScreen';
 const Stack = createNativeStackNavigator();
 
 
@@ -139,7 +139,13 @@ export default function AppNavigation() {
               name="Historico"
               component={HistoryScreen}
             />
+         
+            {/* EDIÇÃO DE REGISTRO */}
 
+            <Stack.Screen
+              name="EditarHumor"
+              component={EditarHumorScreen}
+            />
 
             {/* PERFIL */}
 

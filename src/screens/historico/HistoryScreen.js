@@ -300,6 +300,18 @@ export default function HistoryScreen({ navigation }) {
                   <Text style={styles.identificador}>
                     Registro de humor
                   </Text>
+                
+                <TouchableOpacity
+                  style={styles.botaoEditar}
+                  onPress={() => navigation.navigate('EditarHumor', {
+                    registroId: registro.id,
+                  })}
+                  activeOpacity={0.8}
+                >
+                  <Text style={styles.textoBotaoEditar}>
+                    Editar registro
+                  </Text>
+                </TouchableOpacity>
 
                 </View>
 
@@ -596,6 +608,20 @@ const styles = StyleSheet.create({
     color: '#9A86AE',
     marginTop: 12,
   },
+
+  botaoEditar: {
+  backgroundColor: '#6938B0',
+  paddingVertical: 12,
+  borderRadius: 12,
+  alignItems: 'center',
+  marginTop: 15,
+},
+
+textoBotaoEditar: {
+  color: '#FFFFFF',
+  fontSize: 14,
+  fontWeight: 'bold',
+},
 
   // MENU INFERIOR
 
