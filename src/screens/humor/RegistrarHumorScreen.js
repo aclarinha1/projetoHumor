@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#FFF8F0',
+    backgroundColor: '#F5E8FF',
     padding: 24,
     justifyContent: 'center',
   },
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#513B35',
+    color: '#32105F',
     textAlign: 'center',
     marginBottom: 30,
   },
@@ -220,13 +220,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 95,
     borderWidth: 1,
-    borderColor: '#E5D5CB',
+    borderColor: '#E8D8F5',
   },
 
   selecionado: {
-    borderColor: '#A66B55',
+    borderColor: '#6938B0',
     borderWidth: 2,
-    backgroundColor: '#F5E4D9',
+    backgroundColor: '#E8D8F5',
   },
 
   imagemHumor: {
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   },
 
   nomeHumor: {
-    color: '#513B35',
+    color: '#32105F',
     fontSize: 13,
     textAlign: 'center',
   },
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   subtitulo: {
     fontSize: 17,
     fontWeight: '600',
-    color: '#513B35',
+    color: '#32105F',
     marginTop: 35,
     marginBottom: 12,
   },
@@ -255,12 +255,12 @@ const styles = StyleSheet.create({
     padding: 15,
     height: 120,
     borderWidth: 1,
-    borderColor: '#E5D5CB',
+    borderColor: '#E8D8F5',
     fontSize: 15,
   },
 
   botaoSalvar: {
-    backgroundColor: '#A66B55',
+    backgroundColor: '#6938B0',
     padding: 16,
     borderRadius: 12,
     alignItems: 'center',
