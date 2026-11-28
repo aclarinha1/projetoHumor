@@ -43,6 +43,15 @@ export default function ProfileScreen({ navigation }) {
     ? { uri: usuario.photoURL }
     : require('../../../assets/images/img-fotodeperfil-alternativa.png');
 
+  function navegarPara(tela) {
+
+    if (tela === 'Perfil') {
+      return;
+    }
+
+    navigation.navigate(tela);
+  }
+
   return (
     <ImageBackground
       source={require('../../../assets/images/background.png')}
@@ -144,6 +153,61 @@ export default function ProfileScreen({ navigation }) {
 
       </ScrollView>
 
+              {/* MENU INFERIOR */}
+
+        <View style={styles.navegacao}>
+
+          <TouchableOpacity
+            style={styles.itemNavegacao}
+            onPress={() => navegarPara('Home')}
+          >
+
+            <Image
+              source={require('../../../assets/menu/inicio-desativo.png')}
+              style={styles.iconeMenu}
+            />
+
+            <Text style={styles.textoNavegacao}>
+              Início
+            </Text>
+
+          </TouchableOpacity>
+
+
+          <TouchableOpacity
+            style={styles.itemNavegacao}
+            onPress={() => navegarPara('Historico')}
+          >
+
+            <Image
+              source={require('../../../assets/menu/historico-desativo.png')}
+              style={styles.iconeMenu}
+            />
+
+            <Text style={styles.textoNavegacao}>
+              Histórico
+            </Text>
+
+          </TouchableOpacity>
+
+
+          <TouchableOpacity
+            style={styles.itemNavegacao}
+            onPress={() => navegarPara('Perfil')}
+          >
+
+            <Image
+              source={require('../../../assets/menu/perfil-ativo.png')}
+              style={styles.iconeMenu}
+            />
+
+            <Text style={styles.textoAtivo}>
+              Perfil
+            </Text>
+
+          </TouchableOpacity>
+
+        </View>
     </ImageBackground>
   );
 }
@@ -278,6 +342,41 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  // MENU INFERIOR
+
+  navegacao: {
+    height: 75,
+    backgroundColor: 'rgba(255,255,255,0.96)',
+    borderTopWidth: 1,
+    borderTopColor: '#E8D8F5',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+
+  itemNavegacao: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  iconeMenu: {
+    width: 25,
+    height: 25,
+  },
+
+  textoAtivo: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#6938B0',
+    marginTop: 2,
+  },
+
+  textoNavegacao: {
+    fontSize: 12,
+    color: '#8D7BA6',
+    marginTop: 2,
   },
 
 });
