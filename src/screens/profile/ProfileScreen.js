@@ -9,14 +9,29 @@ import {
   StyleSheet,
   StatusBar,
   TouchableOpacity,
+  Alert
 } from 'react-native';
 
 import { auth } from '../../services/firebase';
 import { COLORS } from '../../styles/theme';
+import { sairUsuario } from '../../services/auth';
 
 export default function ProfileScreen({ navigation }) {
 
   const usuario = auth.currentUser;
+
+  async function handleLogout() {
+  try {
+    await sairUsuario();
+  } catch (error) {
+    console.log('Erro ao sair da conta:', error);
+
+    Alert.alert(
+      'Erro',
+      'Não foi possível sair da conta. Tente novamente.'
+    );
+  }
+}
 
   const nomeUsuario =
     usuario?.displayName || 'Usuário';
@@ -117,15 +132,14 @@ export default function ProfileScreen({ navigation }) {
         </View>
 
         <TouchableOpacity
-          style={styles.botaoInicio}
-          onPress={() => navigation.navigate('Home')}
-          activeOpacity={0.8}
-        >
-
-          <Text style={styles.textoBotao}>
-            Voltar para Início
-          </Text>
-
+            style={styles.botaoInicio}
+            onPress={handleLogout}
+            activeOpacity={0.8}
+          >
+            
+            <Text style={styles.textoBotao}>
+              Sair da conta
+            </Text>
         </TouchableOpacity>
 
       </ScrollView>
@@ -178,8 +192,6 @@ const styles = StyleSheet.create({
     width: 40,
   },
 
-  // FOTO E IDENTIFICAÇÃO
-
   areaPerfil: {
     alignItems: 'center',
     marginTop: 45,
@@ -214,8 +226,6 @@ const styles = StyleSheet.create({
     color: '#6B587D',
     marginTop: 8,
   },
-
-  // INFORMAÇÕES
 
   cardInformacoes: {
     backgroundColor: 'rgba(255,255,255,0.92)',
@@ -253,8 +263,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#E8D8F5',
     marginVertical: 12,
   },
-
-  // BOTÃO
 
   botaoInicio: {
     backgroundColor: COLORS.primary,
