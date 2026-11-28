@@ -13,8 +13,11 @@ import {
   Alert,
 } from 'react-native';
 
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 import { useFocusEffect } from '@react-navigation/native';
 
+import {COLORS} from '../../styles/theme.js';
 import {
   collection,
   query,
@@ -255,7 +258,7 @@ export default function HistoryScreen({ navigation }) {
           ) : (
 
             /* LISTA DE REGISTROS */
-
+            
             <View style={styles.lista}>
 
               {registros.map((registro) => (
@@ -287,31 +290,19 @@ export default function HistoryScreen({ navigation }) {
                       </Text>
 
                     </View>
-
+                    <View>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('EditarHumor', {
+                          registroId: registro.id,
+                        })}
+                        activeOpacity={0.8}
+                      >
+                        <Text><MaterialIcons name="edit" size={24} color={COLORS.primary} /></Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
-
-                  <View style={styles.divisor} />
-
-                  <Text style={styles.descricao}>
-                    {registro.descricao?.trim()
-                      || 'Nenhuma descrição registrada.'}
-                  </Text>
-
-                  <Text style={styles.identificador}>
-                    Registro de humor
-                  </Text>
                 
-                <TouchableOpacity
-                  style={styles.botaoEditar}
-                  onPress={() => navigation.navigate('EditarHumor', {
-                    registroId: registro.id,
-                  })}
-                  activeOpacity={0.8}
-                >
-                  <Text style={styles.textoBotaoEditar}>
-                    Editar registro
-                  </Text>
-                </TouchableOpacity>
+                
 
                 </View>
 
@@ -557,7 +548,7 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    backgroundColor: 'rgba(255,255,255,0.95)',
+    backgroundColor: '#ffffff',
     borderRadius: 20,
     padding: 18,
     marginBottom: 16,
@@ -565,6 +556,7 @@ const styles = StyleSheet.create({
   },
 
   cabecalhoCard: {
+    backgroundColor: "#ffffff",
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -591,37 +583,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 
-  divisor: {
-    height: 1,
-    backgroundColor: '#E8D8F5',
-    marginVertical: 15,
-  },
-
-  descricao: {
-    fontSize: 15,
-    color: '#4B2673',
-    lineHeight: 22,
-  },
-
-  identificador: {
-    fontSize: 11,
-    color: '#9A86AE',
-    marginTop: 12,
-  },
-
-  botaoEditar: {
-  backgroundColor: '#6938B0',
-  paddingVertical: 12,
-  borderRadius: 12,
-  alignItems: 'center',
-  marginTop: 15,
-},
-
-textoBotaoEditar: {
-  color: '#FFFFFF',
-  fontSize: 14,
-  fontWeight: 'bold',
-},
 
   // MENU INFERIOR
 

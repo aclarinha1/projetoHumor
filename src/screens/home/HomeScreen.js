@@ -63,6 +63,18 @@ export default function HomeScreen({ navigation }) {
         >
 
           {/* CABEÇALHO */}
+          <TouchableOpacity
+              style={styles.botaoPerfil}
+              onPress={() => navegarPara('Perfil')}
+              activeOpacity={0.8}
+            >
+              <Image
+                source={fotoPerfil}
+                style={styles.imagemPerfil}
+                resizeMode="cover"
+              />
+            </TouchableOpacity>
+
 
           <View style={styles.cabecalho}>
 
@@ -75,18 +87,6 @@ export default function HomeScreen({ navigation }) {
                 Como você está se sentindo hoje?
               </Text>
             </View>
-
-            <TouchableOpacity
-              style={styles.botaoPerfil}
-              onPress={() => navegarPara('Perfil')}
-              activeOpacity={0.8}
-            >
-              <Image
-                source={fotoPerfil}
-                style={styles.imagemPerfil}
-                resizeMode="cover"
-              />
-            </TouchableOpacity>
 
           </View>
 
@@ -239,6 +239,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     overflow: 'hidden',
     marginLeft: 10,
+    alignSelf: 'flex-end',
+    marginBottom: 15
   },
 
   imagemPerfil: {
